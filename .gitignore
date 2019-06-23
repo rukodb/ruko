@@ -1,0 +1,7 @@
+dist/
+*.egg-info/
+.idea/
+*.pyc
+*venv/
+.pytest_cache/
+
