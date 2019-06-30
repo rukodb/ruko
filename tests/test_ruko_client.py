@@ -1,10 +1,10 @@
 from uuid import uuid4
 
-from ruko import RDict, RukoClient
+from ruko import RDict
 
 
 def test_ruko():
-    rk = RDict(None, RukoClient('127.0.0.1', 8080))
+    rk = RDict.client()
     rk.clear()
     for location in dict(rk.get_mappings()):
         rk.delete_mapping(location)

@@ -2,6 +2,7 @@ from collections import MutableMapping
 
 from typing import Iterator, MutableSequence, Union
 
+from ruko.context import RContext
 from ruko.empty_type import Empty
 from ruko.ruko_client import RukoClient, Index, Json
 
@@ -9,14 +10,20 @@ from ruko.ruko_client import RukoClient, Index, Json
 class RDict(MutableMapping, MutableSequence):
     """High level Python interface to Ruko database"""
 
-    def __init__(self, db_key, rk: RukoClient, key_error=KeyError):
-        self.key = RukoClient.parse_key(db_key)
-        self.rk = rk
-        self.key_error = key_error
-
     @classmethod
     def client(cls, ip: str = "127.0.0.1", port: int = 44544, key_error=KeyError):
-        return cls([], RukoClient(ip, port), key_error)
+        """Create a new connection"""
+        return cls([], RContext(ip, port), key_error)
+
+    def __init__(self, db_key, context: RContext, key_error=KeyError):
+        """Typically, you want to use RDict.client() instead"""
+        self.key = RukoClient.parse_key(db_key)
+        self.context = context
+        self.key_error = key_error
+
+    @property
+    def rk(self):
+        return self.context.get()
 
     def __iter__(self) -> Iterator[str]:
         keys = self.rk.dgetkeys(self.key)
@@ -67,7 +74,7 @@ class RDict(MutableMapping, MutableSequence):
         return self.concat(self.key, b)
 
     def child(self, full_key) -> 'RDict':
-        return RDict(full_key, self.rk, self.key_error)
+        return RDict(full_key, self.context, self.key_error)
 
     def setdefault(self, key, default=None) -> 'RDict':
         key = RukoClient.parse_key(key)
