@@ -31,6 +31,9 @@ class RDict(MutableMapping, MutableSequence):
             return iter(self.get())
         return iter(keys)
 
+    def items(self) -> Iterator[tuple]:
+        return self().items()
+
     def insert(self, index: int, obj: Json) -> None:
         self.rk.linsert(self.key, index, obj)
 
