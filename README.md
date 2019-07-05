@@ -37,7 +37,7 @@ def get_note_by_title(title):
     return notes.by('title')[title]()
 ```
 
-If you are using [Flask](http://flask.pocoo.org/), checkout [Flask-Ruko](https://gitlab.com/ruko/flask-ruko).
+If you are using [Flask](http://flask.pocoo.org/), checkout [Flask-Ruko](https://github.com/rukodb/flask-ruko).
 
 ### Details
 
@@ -108,11 +108,11 @@ devices.by('id')['ghi'].get()  # {'id': 'ghi', 'name': "Sam's first device"}
 
 ## Installation
 
- - Compile and install [ruko-server](https://gitlab.com/ruko/ruko-server)
+ - Compile and install [ruko-server](https://github.com/rukodb/ruko-server)
  - Install the `ruko` python package:
  
  ```bash
- pip install git+https://gitlab.com/ruko/ruko
+ pip install ruko
  ```
 
 ## Contributing

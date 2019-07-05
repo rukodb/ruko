@@ -7,7 +7,7 @@ setup(
     description='A dead simple high performance JSON database',
     author='Matthew Scholefield',
     author_email='matthew331199@gmail.com',
-    url='https://gitlab.com/ruko/ruko-python',
+    url='https://github.com/rukodb/ruko',
     packages=['ruko'],
     install_requires=[],
     keywords='ruko database in-memory',
