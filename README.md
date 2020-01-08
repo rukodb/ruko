@@ -37,7 +37,7 @@ def get_note_by_title(title):
     return notes.by('title')[title]()
 ```
 
-If you are using [Flask](http://flask.pocoo.org/), checkout [Flask-Ruko](https://github.com/rukodb/flask-ruko).
+If you are using [Flask](https://palletsprojects.com/p/flask/), checkout [Flask-Ruko](https://github.com/rukodb/flask-ruko).
 
 ### Details
 
