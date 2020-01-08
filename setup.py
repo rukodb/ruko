@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='ruko',
-    version='0.1.0',
+    version='0.1.1',
     license='MIT',
     description='A dead simple high performance JSON database',
     author='Matthew Scholefield',
