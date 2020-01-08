@@ -98,7 +98,7 @@ class RukoClient:
 
     def linsert(self, key: Index, index: int, value: Json):
         # TODO: Add linsert command
-        data = self.get(key)
+        data = self.get(key) or []
         data.insert(index, value)
         self.set(key, data)
 
@@ -106,7 +106,7 @@ class RukoClient:
         # TODO: Add dupdate command
         # TODO: Detect error (update on list)
         key = self.parse_key(key)
-        val = self.get(key)
+        val = self.get(key) or {}
         val.update(element, **params)
         self.set(key, val)
 
@@ -115,7 +115,7 @@ class RukoClient:
         # TODO: Detect error (merge on list)
         key = self.parse_key(key)
         new_dict = dict(element, **params)
-        val = self.get(key)
+        val = self.get(key) or {}
         val = dict(recursive_merge(val, new_dict))
         self.set(key, val)
 
@@ -131,12 +131,12 @@ class RukoClient:
 
     def contains(self, key: Index, item: str) -> bool:
         # TODO: Add dcontains command
-        return item in self.dgetkeys(key)
+        return item in self.dgetkeys(key) or []
 
     def dgetvalues(self, key: Index):
         # TODO: Add dgetkeys command
         key = self.parse_key(key)
-        return list(self.get(key).values())
+        return list((self.get(key) or {}).values())
 
     def clear(self, key: Index):
         # TODO: Add clear command
