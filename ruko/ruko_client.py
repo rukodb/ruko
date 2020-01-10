@@ -131,7 +131,7 @@ class RukoClient:
 
     def contains(self, key: Index, item: str) -> bool:
         # TODO: Add dcontains command
-        return item in self.dgetkeys(key) or []
+        return item in (self.dgetkeys(key) or [])
 
     def dgetvalues(self, key: Index):
         # TODO: Add dgetkeys command
