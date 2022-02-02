@@ -108,7 +108,7 @@ devices.by('id')['ghi'].get()  # {'id': 'ghi', 'name': "Sam's first device"}
 
 ## Installation
 
- - Compile and install [ruko-server](https://github.com/rukodb/ruko-server)
+ - Compile and install [ruko-server](https://github.com/rukodb/ruko-server_cpp)
  - Install the `ruko` python package:
  
  ```bash
